@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin: auto;
+        }
+        input {
+            width: calc(100% - 24px); /* Adjusting width to account for padding */
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            text-align: right;
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .numpad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .numpad button {
+            background: #f8f9fa;
+            border: 2px solid #ccc;
+        }
+        .numpad button:hover {
+            background: #ddd;
+        }
+        .operator {
+            background: #00ff40!important;
+            color: white;
+            font-weight: bold;
+        }
+        .operator:hover {
+            background: #e07b00;
+        }
+        .calculate {
+            background: #00ff40 !important; /* Same as operators */
+            color: white;
+            font-weight: bold;
+        }
+        .calculate:hover {
+            background: #e07b00;
+        }
+        .refresh {
+            background: #ff4444;
+            color: #00ff40;
+            font-weight: bold;
+        }
+        .refresh:hover {
+            background: #e03e3e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Smart Calculator <i class="fa-solid fa-calculator"></i></h2>
+
+        <input type="text" id="display" placeholder="0">
+
+        <div class="numpad">
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="appendNumber('+')">+</button>
+
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button class="operator" onclick="appendNumber('-')">-</button>
+
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button class="operator" onclick="appendNumber('*')">×</button>
+
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="deleteLast()">⌫</button>
+            <button class="operator" onclick="appendNumber('/')">÷</button>
+
+            <button class="operator" onclick="appendNumber('%')">%</button>
+            <button class="operator" onclick="appendNumber('.')">.</button>
+            <button class="calculate" onclick="performCalculation()">=</button>
+
+            <!-- Refresh Button -->
+            <button class="refresh" onclick="refreshDisplay()">Refresh</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function appendNumber(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function deleteLast() {
+            let value = document.getElementById("display").value;
+            document.getElementById("display").value = value.slice(0, -1);
+        }
+
+        function performCalculation() {
+    let expression = document.getElementById("display").value;
+
+    // Remove leading zeros in the expression (except for the number '0' itself)
+    expression = expression.replace(/(^|\D)0+/g, '$1').replace(/^0+/, '');
+
+    // Prevent empty expression or invalid ones from being sent to the server
+    if (expression === '') {
+        document.getElementById("result").innerHTML = "Invalid input!";
+        return;
+    }
+
+    fetch("/calculate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ expression })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerHTML = "Result: " + data.result;
+        document.getElementById("display").value = data.result;
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+        // Refresh Display Function to Reset the Calculator
+        function refreshDisplay() {
+            document.getElementById("display").value = "";
+            document.getElementById("result").innerHTML = ""; // Clear result
+        }
+    </script>
+</body>
+</html>
