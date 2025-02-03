@@ -19,3 +19,20 @@ A simple and efficient web-based calculator built using Python (Flask) for the b
 **Frontend:** HTML, CSS, JavaScript
 
 **Backend:** Python (Flask)
+
+**📁 templates/ (Frontend UI)**
+
+The templates/ folder contains all HTML files used in the project. Flask renders these templates dynamically.
+
+index.html → The main page of the calculator where users interact with the UI.
+
+**📝 app.py (Flask Backend)**
+The app.py file is the core of the project, containing the backend logic.
+
+Runs a Flask web server
+
+Handles requests and responses
+
+Processes user input and calculates results
+
+Returns the computed result to the frontend
