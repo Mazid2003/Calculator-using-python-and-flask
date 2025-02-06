@@ -1,4 +1,4 @@
-**🧮 Flask-Based Calculator Web App**
+# 🧮 Flask-Based Calculator Web App
 
 A simple and efficient web-based calculator built using Python (Flask) for the backend and a responsive HTML, CSS, JavaScript frontend.
 
