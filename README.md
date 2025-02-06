@@ -27,6 +27,7 @@ The templates/ folder contains all HTML files used in the project. Flask renders
 index.html → The main page of the calculator where users interact with the UI.
 
 **📝 app.py (Flask Backend)**
+
 The app.py file is the core of the project, containing the backend logic.
 
 Runs a Flask web server
