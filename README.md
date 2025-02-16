@@ -37,3 +37,8 @@ Handles requests and responses
 Processes user input and calculates results
 
 Returns the computed result to the frontend
+
+**📜 License**
+
+This project is open-source under the MIT License. Feel free to use and
+modify it! 🚀
