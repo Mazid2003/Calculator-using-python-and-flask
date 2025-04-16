@@ -38,6 +38,12 @@ Processes user input and calculates results
 
 Returns the computed result to the frontend
 
+**Screenshots**
+
+**1.**
+
+![screenshot_2025-04-16_10-28-58](https://github.com/user-attachments/assets/fbb9d538-2365-452c-9b81-5075da3af4c0)
+
 **💬 Want to Collaborate?**
 
 Feel free to fork the repo, submit PRs, and give your feedback! 🔥💡
