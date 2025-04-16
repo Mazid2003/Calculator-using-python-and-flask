@@ -44,6 +44,11 @@ Returns the computed result to the frontend
 
 ![screenshot_2025-04-16_10-28-58](https://github.com/user-attachments/assets/fbb9d538-2365-452c-9b81-5075da3af4c0)
 
+**2.**
+
+![screenshot_2025-04-16_10-31-03](https://github.com/user-attachments/assets/87045ac1-4618-4b73-9ded-062666c8c4a7)
+
+
 **💬 Want to Collaborate?**
 
 Feel free to fork the repo, submit PRs, and give your feedback! 🔥💡
