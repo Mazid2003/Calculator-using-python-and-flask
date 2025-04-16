@@ -48,6 +48,9 @@ Returns the computed result to the frontend
 
 ![screenshot_2025-04-16_10-31-03](https://github.com/user-attachments/assets/87045ac1-4618-4b73-9ded-062666c8c4a7)
 
+**3.**
+
+![screenshot_2025-04-16_10-31-19](https://github.com/user-attachments/assets/291a7384-f082-4b9d-8fd4-f6dd894ea04b)
 
 **💬 Want to Collaborate?**
 
